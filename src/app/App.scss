@@ -28,6 +28,7 @@ $sideber-width: 300px;
         // background-color: darkcyan;
     }
 }
+
 .sidebar {
     display: flex;
     flex-direction: column;
@@ -36,24 +37,34 @@ $sideber-width: 300px;
     // background-color: bisque;
     height: calc(100vh - $header-height);
 }
-
-.list {
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-    &__item {
+.accordion {
+    &__item{
         display: flex;
         align-items: center;
         gap: 15px;
-        font-size: 2rem;
+        font-size: 1.8rem;
         padding: 10px;
         border-radius: 4px;
-        cursor: pointer;
-        &:hover {
-            background-color: silver;
+        font-weight: 900;
+
+        &__icon{
+            cursor: pointer;
+            transition: 1s;
         }
+
+        &__active {
+            transform: rotate(-90deg);
+        }
+
         &__text{
-            font-weight: 400;
+            font-weight: inherit;
         }
     }
+}
+
+.todo__container {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    padding: 20px;
 }
