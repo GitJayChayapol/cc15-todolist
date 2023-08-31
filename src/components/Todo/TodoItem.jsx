@@ -5,20 +5,24 @@ import { HiOutlineCheck } from 'react-icons/hi';
 import TodoForm from './TodoForm';
 
 
-function TodoItem() {
-    const [isOpenForm,setIsOpenForm] = useState(false)
-    const listClick = function (event) {
+//Object Destructuring (Props)
+// function TodoItem(props) {
+// const {task,done,date} = props;
+
+function TodoItem({task,done,date}) {
+const [isOpenForm,setIsOpenForm] = useState(false)
+const listClick = function (event) {
     setIsOpenForm(!isOpenForm)
         }
   return (
     <>
     {isOpenForm? (<TodoForm textSubmit = 'Edit Task' setIsOpenForm={setIsOpenForm}/>) : 
       (<li className={styles.todo}>
-        <div className={`${styles.todo__checkbox} ${styles.todo__checkbox__done}`}>
+        <div className={`${styles.todo__checkbox} ${done ? styles.todo__checkbox__done:''}`}>
           <HiOutlineCheck className={styles.todo__checkbox__icon} />
         </div>
-        <p className={`${styles.todo__task} ${styles.todo__task__done}`}>todo-item 1 </p>
-        <span className={styles.todo__date}>30 Aug</span>
+        <p className={`${styles.todo__task} ${done ? styles.todo__task__done : ''}`}>{task}</p>
+        <span className={styles.todo__date}>{date}</span>
         <div className={styles.todo__action}>
           <span>
             <FaPen className={styles.todo__edit} onClick = {listClick} />
