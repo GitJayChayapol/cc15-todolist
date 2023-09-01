@@ -27,6 +27,7 @@ function TodoLists(props) {
       {props.data.map( (todoObj) => 
       (<TodoItem 
       key={todoObj.id}
+      id={todoObj.id}
       task={todoObj.task} 
       done={todoObj.status} 
       date={todoObj.due_date}/>

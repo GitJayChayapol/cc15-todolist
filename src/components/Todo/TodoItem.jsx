@@ -9,8 +9,9 @@ import TodoForm from './TodoForm';
 // function TodoItem(props) {
 // const {task,done,date} = props;
 
-function TodoItem({task,done,date}) {
+function TodoItem({id,task,done,date}) {
 const [isOpenForm,setIsOpenForm] = useState(false)
+console.log(id)
 const listClick = function (event) {
     setIsOpenForm(!isOpenForm)
         }

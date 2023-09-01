@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { nanoid } from 'nanoid';
 import styles from './TodoForm.module.scss';
 import {Button} from '../Common/Button/Button';
 /* 
@@ -49,7 +50,7 @@ function TodoForm(props) {
       return;
     }
     console.log('create new Todo')
-    const newTodo = {id: props.data.length + 1 ,task:taskInput,status:false,due_date:'1 Sep 2023'}
+    const newTodo = {id: nanoid(),task:taskInput,status:false,due_date:'1 Sep 2023'}
     const newTodoList = [newTodo, ...props.data]
     props.setTodo(newTodoList)
     props.setIsOpenForm(false)
@@ -73,10 +74,6 @@ function TodoForm(props) {
         <div className={styles.todo__form__buttons}>
           <Button text = 'Cancel' active = {false} type='button' onClick={handleCannel}/>
           <Button text = {props.textSubmit} active = {true} type='submit'/>
-          {/* <button type='button'>1</button>
-          <button type='submit'>2</button> */}
-          {/* <button>Cancel</button>
-          <button>Add Task</button> */}
         </div>
       </div>
     </form>
