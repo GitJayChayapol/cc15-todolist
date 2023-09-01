@@ -39,7 +39,7 @@ Rerender == Code ทั้งหมดใน Function จะถูก run ให
 */
 
 // 1. Function Component
-function TodoCreate() {
+function TodoCreate(props) {
 // HOOK FN
   const [isOpenForm,setIsOpenForm] = useState(false)
 
@@ -55,7 +55,7 @@ function TodoCreate() {
   return (
     <>
     {isOpenForm ? 
-    (<TodoForm textSubmit='Add Task' setIsOpenForm={setIsOpenForm}/>) : 
+    (<TodoForm textSubmit='Add Task' setIsOpenForm={setIsOpenForm} data={props.data} setTodo={props.setTodo}/>) : 
     (<div className={styles.todo__create} onClick={handleClick}>
       <div className={styles.todo__create__button}>
         <HiPlus />

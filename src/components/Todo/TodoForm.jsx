@@ -23,7 +23,6 @@ props = {
 }
 */
 
-
 function TodoForm(props) {
   const [isError,setIsError] = useState(false);
   const [taskInput,setTaskInput] = useState('');
@@ -49,14 +48,20 @@ function TodoForm(props) {
       setIsError(true);
       return;
     }
-    console.log('Success')
+    console.log('create new Todo')
+    const newTodo = {id: props.data.length + 1 ,task:taskInput,status:false,due_date:'1 Sep 2023'}
+    const newTodoList = [newTodo, ...props.data]
+    props.setTodo(newTodoList)
+    props.setIsOpenForm(false)
   }
+
   const handleCannel = function () {
     console.log('cancel')
     // correctName : setIsOpenForm(false)
     // inCorrectName : undefined(false) => Boommmm เป็น โกโก้ครั้นน
     props.setIsOpenForm(false)
   }
+
   return (
     <form onSubmit={handleSubmit} className={styles.todo__form__container}>
       {/*	Body */}
