@@ -11,7 +11,7 @@ import TodoForm from './TodoForm';
 
 function TodoItem({id,task,done,date}) {
 const [isOpenForm,setIsOpenForm] = useState(false)
-console.log(id)
+// console.log(id)
 const listClick = function (event) {
     setIsOpenForm(!isOpenForm)
         }

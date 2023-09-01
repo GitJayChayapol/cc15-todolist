@@ -36,28 +36,22 @@ function TodoForm(props) {
 
   const handleSubmit = function (event) {
     event.preventDefault()
-    // ต้องรู้ก่อนว่า User พิมอะไร (อยู่ใน state : taskInput)
-    // FormValidation
-    // case1 : submit ได้
-    // case2 : submit ไม่ได้ => แสดง Error
 
     // 3.FormValidation
     // case1 : submit ได้ => ไม่ Error
     // case2 : submit ไม่ได้ => Error
     if(taskInput.trim() ==='') {
-      console.log('Error')
+      // console.log('Error')
       setIsError(true);
       return;
     }
-    console.log('create new Todo')
-    const newTodo = {id: nanoid(),task:taskInput,status:false,due_date:'1 Sep 2023'}
-    const newTodoList = [newTodo, ...props.data]
-    props.setTodo(newTodoList)
+
+    props.addTodo(taskInput)
     props.setIsOpenForm(false)
   }
 
   const handleCannel = function () {
-    console.log('cancel')
+    // console.log('cancel')
     // correctName : setIsOpenForm(false)
     // inCorrectName : undefined(false) => Boommmm เป็น โกโก้ครั้นน
     props.setIsOpenForm(false)
