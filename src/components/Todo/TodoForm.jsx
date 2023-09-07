@@ -26,29 +26,30 @@ props = {
 
 function TodoForm(props) {
   const [isError,setIsError] = useState(false);
-  const [taskInput,setTaskInput] = useState('');
+  const [taskInput,setTaskInput] = useState(props.oldTodo?.task || '');
 
   const handleChangeInput = function (event) {
     // console.log('user typing...',event.target.value)
     if(isError) setIsError(false);
     setTaskInput(event.target.value)
   }
-
+// 2 MODE => Add or Edit
   const handleSubmit = function (event) {
     event.preventDefault()
-
     // 3.FormValidation
     // case1 : submit ได้ => ไม่ Error
     // case2 : submit ไม่ได้ => Error
     if(taskInput.trim() ==='') {
-      // console.log('Error')
       setIsError(true);
       return;
     }
-
-    props.addTodo(taskInput)
+    if(props.addTodo) props.addTodo(taskInput);
+    else if (props.editTodo && props.oldTodo){
+      props.editTodo(props.oldTodo.id, {task: taskInput});
+    }
+    // else if (props.editTodo) props.editTodo(id,updateTodoObj)
     props.setIsOpenForm(false)
-  }
+  };
 
   const handleCannel = function () {
     // console.log('cancel')
