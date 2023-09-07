@@ -1,5 +1,4 @@
 import styles from './TodoHeader.module.scss';
-// styles = { header : cssRules}
 
 function TodoHeader() {
   const today = new Date();

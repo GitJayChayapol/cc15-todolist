@@ -3,14 +3,12 @@ import { useState } from 'react';
 import { FaTrashAlt, FaPen } from 'react-icons/fa';
 import { HiOutlineCheck } from 'react-icons/hi';
 import TodoForm from './TodoForm';
+import useTodo from '../../hooks/useTodo';
 
-//Object Destructuring (Props)
-// function TodoItem(props) {
-// const {task,done,date} = props;
-
-function TodoItem({id,task,done,date,deleteTodo,editTodo}) {
+function TodoItem({id,task,done,date}) {
 const [isOpenForm,setIsOpenForm] = useState(false)
-const listClick = function (event) {
+const { deleteTodo , editTodo } = useTodo()
+const listClick = function () {
     setIsOpenForm(!isOpenForm)
         }
 const toggleStatus = () => {
